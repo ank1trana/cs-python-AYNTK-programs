@@ -86,10 +86,19 @@ print(new_msg)
 #USE OF +
 name = 'Ankit'
 msg = 'Hi'
-
+###############################################
+#FORMATTED STRINGS
 #combined = msg + ", " + name + ". How are you?"
 combined = '{}, {}. How are you?'.format( msg , name )
 print(combined)
+###############################################
+#'f' STRINGS v3.6 or higher
+combined_1 = f'{msg}, {name.upper()}. How are you?'
+print(combined_1)
+###############################################
+#help from documentation
+print(dir(combined))
+print(help(str))
 
 
 
