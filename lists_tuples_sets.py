@@ -230,4 +230,53 @@ Since a set is unordered, there is no way we can use indexing to access or delet
  A set is a collection which is unordered and unindexed. So dictionaries are unordered key-value-pairs.
 '''
 
+#A SET IS GIVEN
+print('**************** SETS FUNCTIONALITIES ******************* ')
+
+cs_courses = {'History', 'Math', 'Physics', 'CompSci'}
+art_courses = {'History', 'Art', 'Cooking', 'Comm'}
+print(cs_courses)
+
+cs_courses = {'History', 'Math', 'Physics', 'CompSci', 'Math'} #added Math again
+print(cs_courses)
+'''
+**************** SETS FUNCTIONALITIES ******************* 
+{'Physics', 'CompSci', 'Math', 'History'}
+{'Physics', 'CompSci', 'Math', 'History'}
+
+#sETS REMOVE DUPLICATES, AS CAN BE SEEN ABOVE
+
+#if we print sets agin, the order is different e.g. below
+**************** SETS FUNCTIONALITIES ******************* 
+{'CompSci', 'Math', 'Physics', 'History'}
+{'CompSci', 'Math', 'Physics', 'History'}
+sets dont care about order
+use is to test if a value is part of a set or if duplicates exist
+'''
+print('Math' in cs_courses)
+#>>> True
+
+#elements in common, not common and combined sets
+print(cs_courses.intersection(art_courses))
+#{'History'}
+print(cs_courses.difference(art_courses))
+#{'Physics', 'Math', 'CompSci'}
+print(cs_courses.union(art_courses))
+#{'History', 'Cooking', 'Comm', 'Physics', 'CompSci', 'Math', 'Art'}
+
+#################### Creating empty sets, tuples and lists
+
+# Empty Lists
+empty_list = []
+empty_list = list()
+
+# Empty Tuples
+empty_tuple = ()
+empty_tuple = tuple()
+
+# Empty Sets
+empty_set = {} # This isn't right! It's a dict
+empty_set = set() #the only way for empty sets
+
+
 
