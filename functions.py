@@ -65,3 +65,75 @@ print(hi_again('Hola!', name = 'Ranjit'))
 
 #>>> Ranjit overwrites the default value and it prints Hola!!, Ranjit. hoW ARE YOU?
 
+############ (*args) and (**args)
+
+def student_info(*args, **kwargs):
+    print(args) #prints a tuple
+    print(kwargs) #prints a dictionary
+student_info ('Math', 'Art', NAME = 'ankita', AGE =26)    
+'''
+('Math', 'Art')
+{'NAME': 'ankita', 'AGE': 26}
+'''
+def student_info(*args, **kwargs):
+    print(args) #prints a tuple
+    print(kwargs) #prints a dictionary
+
+courses = ['Math', 'Art']
+info = {'name': 'Ankit', 'age': 27}
+print('@@@@@@@@@@@@@')
+#student_info ('Math', 'Art', NAME = 'ankita', AGE =26)  
+student_info(courses,info)
+'''
+@@@@@@@@@@@@@
+(['Math', 'Art'], {'name': 'Ankit', 'age': 27})
+{}
+
+* infront if list and ** in frion of dictionary will unpack them, otherwise it wont
+'''
+def student_info(*args, **kwargs):
+    print(args) #prints a tuple
+    print(kwargs) #prints a dictionary
+
+courses = ['Math', 'Art']
+info = {'name': 'Ankit', 'age': 27}
+print('^^^^^^^^^^^^^^^')
+#student_info ('Math', 'Art', NAME = 'ankita', AGE =26)  
+student_info(*courses,**info)
+'''
+^^^^^^^^^^^^^^^
+('Math', 'Art')
+{'name': 'Ankit', 'age': 27}
+'''
+
+############# sampke snippet to put it all toghether ####################
+
+# Number of days per month. First value placeholder for indexing purposes.
+month_days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+
+def is_leap(year):
+    """Return True for leap years, False for non-leap years."""
+
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+
+def days_in_month(year, month):
+    """Return number of days in that month in that year."""
+
+    if not 1 <= month <= 12:
+        return 'Invalid Month'
+
+    if month == 2 and is_leap(year):
+        return 29
+
+    return month_days[month]
+
+print(is_leap(2017))
+#>> Fasle
+print(is_leap(2020))
+#>> True
+print(days_in_month(1991,11))
+#>> 30
+print(days_in_month(2020,2))
+#>> 29
