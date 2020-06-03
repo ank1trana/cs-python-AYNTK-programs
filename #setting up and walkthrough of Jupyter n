@@ -1,0 +1,55 @@
+#setting up and walkthrough of Jupyter notebook
+#run code interactively in a web browser
+#evolved out of iPython
+#how they got the results and being able to reproduce those results
+
+
+#mix of python code and some markdown that describes what is going on, some charts etc.
+#almost looks like a blogpost
+#but charts are not static, they were produced by the code right next to it.
+#allows rerun and observe result rightaway
+
+#Anaconda python distribution is recommended
+
+jupyter notebook
+#this launches a notebook server in your terminal
+#a localhost window in browser
+
+#we need a kernel - what prog lang you want to use
+#we can have for python2 or python[root]
+#pre-requisites to the above:
+#**********************
+
+python3 -m pip install ipykernel
+python3 -m ipykernel install --user
+
+#2 modes of a notebook: command mode-adding or deleting cells - blue cell
+#edit mode - edit ourselves, click into a cell to enter edit mode - green cell, pencil icon appears
+
+#try all the cell>>something commands on the GUI
+#CTRL+ ENTER execute the cell
+#shift+enter - execute and select below
+#option+enter - exec and add a new cell below
+
+#In[12]: print("Hi")
+#what is this incrementing number? It shows the order in which cells were executed
+#the numbers represent the ORDER OF EXECUTION
+#MEANING - YOU HAVE TO MOVE ELLS AROUND TO MAINTAIN CORRECT ORDER, use up and down arrow icons in the menu
+
+#RUN ALL - runs top to bottom in the order they are present
+#add something at the top-> Insert->cell above, choose cell type as markdown
+
+####### useful features
+
+#special commands within our cells:
+#if you put !, then it is seen as a basj command
+#e.g. !pip list
+
+#buit-in magic commands
+
+% - arguments come from same line
+%% - entire cell will be used as arguments aka cell magic
+
+%ls magic
+
+#refer to the notebook created as example for more
