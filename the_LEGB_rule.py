@@ -150,38 +150,47 @@ outer()
 '''
 outer x
 outer x
+
+THERE WAS NO LOCAL x to inner 
+so local to enclosing func? yes!! which is the outer()
 '''
+
+#when I set x in our inner(), it doesnt affect x of outer()
+
 def outer():
-    x = 'outer x'
+    #x = 'outer x' #IF WE COMMENT THIS OUT IT TAKES AWAY LOCAL
 
     def inner():
-        #x = 'inner x'
-        print(x)
+        x = 'inner x'
+        print(x) #<-PRINTS THE LOCAL ONE JUST FINE, for the inner()
     
     inner()
-    print(x)
+    print(x) #<--error becasue no LEGB FOUND, out here its local scope ois commented, no enclosing functins present, no global or builtins
 outer()
 '''
 should crash. think why?
+becasue 
 '''
+#Change x variable of outer() ---> use nonlocal
 
 def outer():
     x = 'outer x'
 
     def inner():
-        nonlocal x
-        x = 'inner x'
+        nonlocal x 
+        x = 'inner x' #overwrites whatever the outer x had now
         print(x)
     
     inner()
-    print(x)
+    print(x) #prints the overwritten value
 outer()
 
 '''
 inner x
 inner x
 
-we are affecting the local copy twice
+we are affecting the local x of our enclosing function
+x = 'inner x' actually affecrts 
 
 nonlocal IS USED WAY MORE OFTERN WITH CLOSURES AND DECORATORS
 '''
@@ -191,7 +200,7 @@ def outer():
     x = 'outer x'
 
     def inner():
-        nonlocal x
+        #nonlocal x
         x = 'inner x'
         print(x)
     
@@ -204,4 +213,47 @@ THE FINAL ORDER TEST >>>>>>>>>>>>>>>>>
 inner x
 inner x
 global x ver
+
+as per LEGB rule
+
 ''' 
+print('did not find in localscope, fell back to enclosing scope >>>>>>>>>>>>>>>>>')
+x = 'global x ver'
+def outer():
+    x = 'outer x'
+
+    def inner():
+        #nonlocal x
+        #x = 'inner x'
+        print(x)
+    
+    inner()
+    print(x)
+outer()
+print(x)
+'''
+outer x
+outer x
+global x ver
+'''
+print('nO LOCAL OR ENCLOSING SCOPE FOUND, falls back to GLOBAL, \n IF THIS HAD FAILED THEN BUILT-IN AND THEN ERROR IS THROWN>>>>>>>>>>>>>>>>')
+x = 'global x ver'
+def outer():
+    #x = 'outer x'
+
+    def inner():
+        #nonlocal x
+        #x = 'inner x'
+        print(x)
+    
+    inner()
+    print(x)
+outer()
+print(x)
+'''
+nO LOCAL OR ENCLOSING SCOPE FOUND, falls back to GLOBAL, 
+ IF THIS HAD FAILED THEN BUILT-IN AND THEN ERROR IS THROWN>>>>>>>>>>>>>>>>
+global x ver
+global x ver
+global x ver
+'''
